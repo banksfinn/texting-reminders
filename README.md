@@ -26,6 +26,9 @@ The reason all of these commands start capitalized (against how bad it looks) is
 ## Delete past
 `Delete past` will delete all items that have already happened.
 
+## Reset {day}
+`Reset {day}` will remove all items from a given day, using the same date parsing as that that was used for setting up reminders
+
 # Parameters
 
 Set with the following structure:

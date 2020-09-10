@@ -14,6 +14,7 @@ delete = 0
 # Send a message from Twilio's service
 def send_message(text):
     if text:
+        text = 'Reminder\n' + text
         client.messages.create(body=text, from_=config.twilio_number, to=config.personal_number)
 
 # Sends a message of all reminders in the range given
@@ -75,6 +76,8 @@ def handle_text_command(raw_text):
             reminders = {}
         if commands[1] == 'past':
             remove_old_reminders(delete)
+    if commands[0] == 'Reset':
+        reminders.pop(dateparser.parse(commands[1], settings={'PREFER_DATES_FROM': 'future'}).date(), None)
             
 # Removes old reminders (if delete is set to true)
 def remove_old_reminders(delete):
